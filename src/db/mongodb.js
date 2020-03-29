@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 
-const init = () => {
-    const uri = "mongodb+srv://Chat:<PASSWORD>@chat-db-sx5gg.mongodb.net/chat";
+const init = (DBPass) => {
+    const uri = "mongodb+srv://Chat:" + DBPass + "@chat-db-sx5gg.mongodb.net/chat";
     mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true });
     this.db = mongoose.connection;
 
