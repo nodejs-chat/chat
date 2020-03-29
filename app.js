@@ -6,9 +6,9 @@ var fs = require('fs').promises;
 var path = require('path');
 
 async function main() {
-    var DBPass = await fs.readFile(path.join(__dirname, "src", "db", "db.pass"), 'utf8');
+    var DBPass = await fs.readFile(path.join(__dirname, "src", "db", "db.password"), 'utf8');
     await DB.init(DBPass);
-    
+
 
     return;
 }
