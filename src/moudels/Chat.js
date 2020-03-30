@@ -29,6 +29,10 @@ const ChatSchema = new Schema(
             type: Array,
             default: []
         },
+        roomSocketId: {
+            type: String,
+            default: null
+        },
         users: [
             {
                 _id: false,

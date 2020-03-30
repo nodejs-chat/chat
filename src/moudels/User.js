@@ -27,6 +27,10 @@ const UserSchema = new Schema(
             type: String,
             default: null
         },
+        socketId: {
+            type: String,
+            default: null
+        },
     },
     {
         timestamps: {
