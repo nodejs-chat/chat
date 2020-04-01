@@ -34,10 +34,38 @@ const register = (data, socket) => {
             password: data.password,
             socketId: socket.id
         });
-        user.save();
-        socket.emit('login', {
-            success: true,
-            username: data.username
+        var taken = (error)=>
+        {
+            if(error == undefined)
+            {
+                
+                console.log('all good!');
+                socket.emit('login', {
+                    success: true,
+                    username: data.username
+                });
+            }
+            else if(error.code == 11000)
+            {
+                var array = ['name' , 'email' , 'username'];
+                array.forEach(field => {
+                    if(field in error.keyValue)
+                    {
+                        console.log("there is an user with same " +field+"!!!!!!");
+                        socket.emit('same_field_reg', {
+                            success: false,
+                            field: field
+                        });
+                    }
+                });
+                //console.log(error.keyPattern);
+                //console.log(typeof(error.keyPattern));
+                //console.dir(error);
+            }
+        }
+        user.save((err)=>
+        {
+            taken(err);
         });
     }
 };
