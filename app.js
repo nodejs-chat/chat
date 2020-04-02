@@ -1,7 +1,10 @@
+<<<<<<< HEAD
 const { User } = require('./src/moudels/User.js');
 
 //const { Chat } = require('./src/moudels/Chat.js');
 //const { Message } = require('./src/moudels/Message.js');
+=======
+>>>>>>> 160b4802119f85cc94ae0ec7a8764b2796ffc86b
 var express = require('express');
 var app = express();
 var path = require('path');
