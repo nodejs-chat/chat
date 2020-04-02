@@ -1,4 +1,5 @@
-//const { User } = require('./src/moudels/User.js');
+const { User } = require('./src/moudels/User.js');
+
 //const { Chat } = require('./src/moudels/Chat.js');
 //const { Message } = require('./src/moudels/Message.js');
 var express = require('express');

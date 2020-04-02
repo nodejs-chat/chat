@@ -2,7 +2,13 @@ const { User } = require('../moudels/User.js');
 
 
 const register = (data, socket) => {
-    if(data.username == undefined){
+    if(data == undefined){
+        socket.emit('error', {
+            success: false,
+            message: 'data not found'
+        });
+    }
+    else if(data.username == undefined){
         socket.emit('error', {
             success: false,
             message: 'username not found'
@@ -46,9 +52,8 @@ const register = (data, socket) => {
                 });
             }
             else if(error.code == 11000)
-            {
-                var array = ['name' , 'email' , 'username'];
-                array.forEach(field => {
+            {   
+                Object.keys(User.schema.obj).filter(field => User.schema.obj[field].unique==true).forEach(field => {
                     if(field in error.keyValue)
                     {
                         console.log("there is an user with same " +field+"!!!!!!");
@@ -58,9 +63,6 @@ const register = (data, socket) => {
                         });
                     }
                 });
-                //console.log(error.keyPattern);
-                //console.log(typeof(error.keyPattern));
-                //console.dir(error);
             }
         }
         user.save((err)=>

@@ -1,4 +1,5 @@
 var register = require('./register.js');
+var login = require('./login.js');
 const { User } = require('../moudels/User.js');
 
 const init = (io, app) => {
@@ -18,6 +19,11 @@ const init = (io, app) => {
             if (addedUser) return;
             register.register(data, socket);
             addedUser = true;
+        });
+
+        socket.on("login_req" , (data)=>
+        {
+            login.login(data,socket);
         });
     });
 };
