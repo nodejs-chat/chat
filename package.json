@@ -1,7 +1,7 @@
 {
   "name": "chat",
   "description": "Chat app powered on websocket",
-  "version": "0.1",
+  "version": "0.0.1",
   "author": "NodeJS-Chat (https://github.com/nodejs-chat)",
   "repository": "nodejs-chat/chat",
   "homepage": "https://github.com/nodejs-chat",
@@ -9,7 +9,7 @@
   "private": true,
   "dependencies": {
     "express": "expressjs/express",
-    "socketio": "socketio/socket.io",
+    "socket.io": "socketio/socket.io",
     "mongoose": "Automattic/mongoose"
   }
 }
