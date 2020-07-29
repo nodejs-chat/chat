@@ -1,0 +1,31 @@
+.center {
+    height: 200px;
+    position: relative;
+  }
+  
+  .buttonArea {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    border: none;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin: 4px 2px;
+    display: block;
+  
+  }
+
+  .buttons {
+    border-radius: 10px;
+    font-size: 170%;
+    display: block;
+    margin: 10px;
+    width:200px;
+  }
+  
