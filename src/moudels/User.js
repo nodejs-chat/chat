@@ -8,7 +8,6 @@ const UserSchema = new Schema(
             type: String,
             required: true,
             trim: true,
-            unique: true,
             maxlength: ['30', 'Name max length is 30 charters']
         },
         username: {

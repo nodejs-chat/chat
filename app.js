@@ -12,7 +12,7 @@ var path = require('path');
 var DB = require('./src/db/index.js');
 var router = require('./src/router/index.js');
 
-port = 8080;
+port = 80;
 
 async function main() {
     var DBPass = await fs.readFile(path.join(__dirname, "src", "db", "db.password"), 'utf8');

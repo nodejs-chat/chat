@@ -1,28 +1,40 @@
 var register = require('./register.js');
-var login = require('./login.js');
+var path = require('path');
 const { User } = require('../moudels/User.js');
 
 const init = (io, app) => {
     app.get('/', (req, res) => {
-        res.render('index');
+        res.sendFile(path.join(__dirname, "..", "public_html", "index.html"));
     });
-    app.get('/delete_users', (req,res)=>
-    {
-        User.deleteMany({}, (err,result)=>{});
-        res.send("all the users deleted");
-        console.log('all the users deleted');
+
+    app.get('/register', (req, res) => {
+        res.sendFile(path.join(__dirname, "..", "public_html", "register.html"));
+    });
+
+    app.get('/home', (req, res) => {
+        var cookie = req.headers.cookie;
+        cookie = cookie.split('; ');
+
+        var userId = undefined;
+        cookie.forEach(data => {
+            data = data.split('=');
+            if(data[0] === "userId")
+                userId = data[1];
+        });
+
+        if(userId !== undefined)
+            res.sendFile(path.join(__dirname, "..", "public_html", "chat.html"));
+        else
+            res.sendFile(path.join(__dirname, "..", "public_html", "index.html"));
+        
     });
 
     io.on('connection', (socket) => {
-        var addedUser = false;
         socket.on('register', (data) => {
-            if (addedUser) return;
             register.register(data, socket);
-            addedUser = true;
         });
 
-        socket.on("login_req" , (data)=>
-        {
+        socket.on("login" , (data)=>{
             login.login(data,socket);
         });
     });

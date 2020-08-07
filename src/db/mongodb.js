@@ -5,7 +5,9 @@ const init = (DBPass) => {
     mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true });
     this.db = mongoose.connection;
 
-    this.db.on('error', console.error.bind(console, 'connection error:'));
+    this.db.once('error', function(error) {
+        console.error('Connection error!' + "\nmessage:" + error.message);
+    });
     this.db.once('open', function() {
         console.log('Connection opend!');
     });
